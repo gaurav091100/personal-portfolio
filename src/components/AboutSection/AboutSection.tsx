@@ -1,264 +1,310 @@
-
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTheme } from '../../hooks/useTheme';
-import { Skill, Tool, Experience } from '../../types/portfolio';
-
-const technicalSkills: Skill[] = [
-  { name: "JavaScript", level: 95, category: 'frontend' },
-  { name: "TypeScript", level: 90, category: 'frontend' },
-  { name: "React", level: 92, category: 'frontend' },
-  { name: "Next.js", level: 88, category: 'frontend' },
-  { name: "Vue.js", level: 85, category: 'frontend' },
-  { name: "Angular", level: 80, category: 'frontend' },
-  { name: "HTML5", level: 98, category: 'frontend' },
-  { name: "CSS3", level: 95, category: 'frontend' },
-  { name: "Tailwind CSS", level: 93, category: 'frontend' },
-  { name: "Sass/SCSS", level: 88, category: 'frontend' },
-  { name: "Node.js", level: 85, category: 'backend' },
-  { name: "Express.js", level: 82, category: 'backend' },
-  { name: "Python", level: 78, category: 'backend' },
-  { name: "PHP", level: 75, category: 'backend' },
-  { name: "MongoDB", level: 80, category: 'database' },
-  { name: "PostgreSQL", level: 82, category: 'database' },
-  { name: "MySQL", level: 85, category: 'database' },
-  { name: "Firebase", level: 88, category: 'database' },
-  { name: "GraphQL", level: 75, category: 'other' },
-  { name: "REST APIs", level: 90, category: 'other' },
-  { name: "Git", level: 92, category: 'other' },
-  { name: "Docker", level: 70, category: 'other' }
-];
-
-const tools: Tool[] = [
-  { name: "VS Code", category: 'development' },
-  { name: "WebStorm", category: 'development' },
-  { name: "Chrome DevTools", category: 'development' },
-  { name: "Postman", category: 'development' },
-  { name: "Figma", category: 'design' },
-  { name: "Adobe XD", category: 'design' },
-  { name: "Photoshop", category: 'design' },
-  { name: "Notion", category: 'productivity' },
-  { name: "Slack", category: 'productivity' },
-  { name: "Jira", category: 'productivity' }
-];
-
-const experience: Experience[] = [
-  {
-    title: "Senior Frontend Developer",
-    company: "Tech Innovations Corp",
-    period: "2022 - Present",
-    description: [
-      "Led development of 5+ large-scale web applications using React and TypeScript",
-      "Implemented responsive designs that improved mobile user engagement by 40%",
-      "Mentored junior developers and conducted code reviews",
-      "Optimized application performance resulting in 30% faster load times"
-    ],
-    technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "Node.js"]
-  },
-  {
-    title: "Frontend Developer",
-    company: "Digital Solutions Inc",
-    period: "2021 - 2022",
-    description: [
-      "Developed and maintained multiple client websites and web applications",
-      "Collaborated with UI/UX designers to implement pixel-perfect designs",
-      "Integrated third-party APIs and payment gateways",
-      "Improved website accessibility compliance to WCAG 2.1 standards"
-    ],
-    technologies: ["React", "Vue.js", "JavaScript", "CSS3", "Bootstrap"]
-  },
-  {
-    title: "Junior Web Developer",
-    company: "StartupXYZ",
-    period: "2020 - 2021",
-    description: [
-      "Built responsive web interfaces using HTML, CSS, and JavaScript",
-      "Assisted in the development of e-commerce platforms",
-      "Participated in agile development processes and daily standups",
-      "Gained experience with version control systems and deployment processes"
-    ],
-    technologies: ["HTML5", "CSS3", "JavaScript", "jQuery", "PHP"]
-  }
-];
-
-const personalBio = "Passionate full-stack web developer with 3+ years of experience creating innovative, user-centric web applications. Specialized in modern JavaScript frameworks and always eager to learn new technologies.";
+import { Code, Database, Palette, Monitor, Smartphone, Globe } from 'lucide-react';
 
 export const AboutSection: React.FC = () => {
   const { isDark } = useTheme();
 
-  const skillsByCategory = {
-    frontend: technicalSkills.filter(skill => skill.category === 'frontend'),
-    backend: technicalSkills.filter(skill => skill.category === 'backend'),
-    database: technicalSkills.filter(skill => skill.category === 'database'),
-    other: technicalSkills.filter(skill => skill.category === 'other')
+  const skills = [
+    // Frontend
+    { name: "JavaScript", level: 95, category: 'frontend' },
+    { name: "TypeScript", level: 90, category: 'frontend' },
+    { name: "React", level: 95, category: 'frontend' },
+    { name: "Next.js", level: 85, category: 'frontend' },
+    { name: "Vue.js", level: 80, category: 'frontend' },
+    { name: "Angular", level: 75, category: 'frontend' },
+    { name: "HTML5", level: 98, category: 'frontend' },
+    { name: "CSS3", level: 95, category: 'frontend' },
+    { name: "Sass/SCSS", level: 90, category: 'frontend' },
+    { name: "Tailwind CSS", level: 95, category: 'frontend' },
+    
+    // Backend
+    { name: "Node.js", level: 85, category: 'backend' },
+    { name: "Express.js", level: 85, category: 'backend' },
+    { name: "Python", level: 80, category: 'backend' },
+    { name: "Django", level: 75, category: 'backend' },
+    { name: "PHP", level: 70, category: 'backend' },
+    { name: "Laravel", level: 70, category: 'backend' },
+    
+    // Database
+    { name: "MongoDB", level: 85, category: 'database' },
+    { name: "MySQL", level: 80, category: 'database' },
+    { name: "PostgreSQL", level: 80, category: 'database' },
+    { name: "Firebase", level: 85, category: 'database' },
+    { name: "Supabase", level: 80, category: 'database' },
+    
+    // Other
+    { name: "Git", level: 90, category: 'other' },
+    { name: "Docker", level: 75, category: 'other' },
+    { name: "AWS", level: 70, category: 'other' },
+    { name: "GraphQL", level: 75, category: 'other' }
+  ];
+
+  const tools = [
+    { name: "VS Code", icon: "💻", category: 'development' },
+    { name: "WebStorm", icon: "🚀", category: 'development' },
+    { name: "Figma", icon: "🎨", category: 'design' },
+    { name: "Adobe XD", icon: "✨", category: 'design' },
+    { name: "Photoshop", icon: "🖼️", category: 'design' },
+    { name: "Postman", icon: "📡", category: 'development' },
+    { name: "Chrome DevTools", icon: "🔧", category: 'development' },
+    { name: "Notion", icon: "📝", category: 'productivity' },
+    { name: "Slack", icon: "💬", category: 'productivity' },
+    { name: "Trello", icon: "📋", category: 'productivity' }
+  ];
+
+  const experience = [
+    {
+      title: "Senior Frontend Developer",
+      company: "TechCorp Solutions",
+      period: "2023 - Present",
+      description: [
+        "Led development of modern web applications using React and TypeScript",
+        "Implemented responsive designs and optimized performance for 50+ components",
+        "Collaborated with cross-functional teams to deliver high-quality products",
+        "Mentored junior developers and conducted code reviews"
+      ],
+      technologies: ["React", "TypeScript", "Next.js", "Tailwind CSS", "GraphQL"]
+    },
+    {
+      title: "Frontend Developer",
+      company: "Digital Innovations Ltd",
+      period: "2021 - 2023",
+      description: [
+        "Developed and maintained multiple client-facing web applications",
+        "Integrated RESTful APIs and implemented state management solutions",
+        "Optimized applications for maximum speed and scalability",
+        "Participated in agile development processes and sprint planning"
+      ],
+      technologies: ["React", "Vue.js", "JavaScript", "SASS", "Node.js"]
+    },
+    {
+      title: "Junior Web Developer",
+      company: "StartupXYZ",
+      period: "2020 - 2021",
+      description: [
+        "Built responsive websites and web applications from scratch",
+        "Collaborated with designers to implement pixel-perfect UI components",
+        "Learned and implemented modern frontend frameworks and tools",
+        "Contributed to codebase improvements and best practices"
+      ],
+      technologies: ["HTML", "CSS", "JavaScript", "React", "MySQL"]
+    }
+  ];
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
   };
 
-  const toolsByCategory = {
-    development: tools.filter(tool => tool.category === 'development'),
-    design: tools.filter(tool => tool.category === 'design'),
-    productivity: tools.filter(tool => tool.category === 'productivity')
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6
+      }
+    }
   };
+
+  const skillCategories = [
+    { key: 'frontend', title: 'Frontend', icon: Monitor, color: 'from-blue-600 to-blue-700' },
+    { key: 'backend', title: 'Backend', icon: Database, color: 'from-green-600 to-green-700' },
+    { key: 'database', title: 'Database', icon: Database, color: 'from-purple-600 to-purple-700' },
+    { key: 'other', title: 'Other', icon: Globe, color: 'from-orange-600 to-orange-700' }
+  ];
 
   return (
-    <section id="about" className={`py-20 px-4 sm:px-6 lg:px-8 ${
-      isDark ? 'bg-gray-800' : 'bg-white'
-    } relative overflow-hidden`}>
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-16">
-          <h2 className={`text-3xl md:text-4xl lg:text-5xl font-bold mb-6 ${
-            isDark ? 'text-white' : 'text-gray-900'
-          } animate-fade-in-up`}>
+    <section id="about" className={`py-20 px-4 sm:px-6 lg:px-8 ${isDark ? 'bg-gray-900' : 'bg-gray-50'}`}>
+      <div className="max-w-7xl mx-auto">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="text-center mb-16"
+        >
+          <motion.h2 
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent"
+          >
             About Me
-          </h2>
-          <p className={`text-lg md:text-xl ${
-            isDark ? 'text-gray-300' : 'text-gray-600'
-          } max-w-3xl mx-auto animate-fade-in-up animation-delay-200`}>
-            {personalBio}
-          </p>
-        </div>
+          </motion.h2>
+          <motion.p 
+            variants={itemVariants}
+            className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'} max-w-3xl mx-auto leading-relaxed`}
+          >
+            Passionate full-stack developer with 4+ years of experience creating beautiful, responsive web applications. 
+            I specialize in modern JavaScript frameworks and have a keen eye for user experience and clean code architecture.
+          </motion.p>
+        </motion.div>
 
-        {/* Technical Skills Section */}
-        <div className="mb-16">
-          <h3 className={`text-2xl md:text-3xl font-bold mb-8 text-center ${
-            isDark ? 'text-white' : 'text-gray-900'
-          }`}>
+        {/* Skills Section */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="mb-20"
+        >
+          <motion.h3 
+            variants={itemVariants}
+            className={`text-3xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}
+          >
             Technical Skills
-          </h3>
-          <div className="grid lg:grid-cols-2 gap-8">
-            {Object.entries(skillsByCategory).map(([category, categorySkills]) => (
-              <div key={category} className="animate-fade-in-up">
-                <h4 className={`text-xl font-semibold mb-4 capitalize ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  {category} Skills
-                </h4>
-                <div className="space-y-4">
-                  {categorySkills.map((skill, index) => (
-                    <div key={skill.name} className="animate-slide-in-right" style={{ animationDelay: `${index * 0.1}s` }}>
-                      <div className="flex justify-between mb-2">
-                        <span className={`font-medium ${
-                          isDark ? 'text-gray-300' : 'text-gray-700'
-                        }`}>
-                          {skill.name}
-                        </span>
-                        <span className={`text-sm ${
-                          isDark ? 'text-gray-400' : 'text-gray-500'
-                        }`}>
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className={`w-full bg-gray-200 rounded-full h-2 ${
-                        isDark ? 'bg-gray-700' : 'bg-gray-200'
-                      } overflow-hidden`}>
-                        <div
-                          className="bg-gradient-to-r from-red-500 to-pink-600 h-2 rounded-full transition-all duration-1000 ease-out animate-scale-x"
-                          style={{ 
-                            width: `${skill.level}%`,
-                            animationDelay: `${index * 0.2}s`
-                          }}
-                        ></div>
-                      </div>
-                    </div>
-                  ))}
+          </motion.h3>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {skillCategories.map((category) => (
+              <motion.div
+                key={category.key}
+                variants={itemVariants}
+                className={`p-6 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300`}
+              >
+                <div className="flex items-center mb-6">
+                  <div className={`p-3 rounded-lg bg-gradient-to-r ${category.color} mr-3`}>
+                    <category.icon className="text-white" size={24} />
+                  </div>
+                  <h4 className={`text-xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                    {category.title}
+                  </h4>
                 </div>
-              </div>
+                
+                <div className="space-y-4">
+                  {skills
+                    .filter(skill => skill.category === category.key)
+                    .map((skill, index) => (
+                      <motion.div
+                        key={skill.name}
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.1 }}
+                        className="relative"
+                      >
+                        <div className="flex justify-between mb-2">
+                          <span className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                            {skill.name}
+                          </span>
+                          <span className="text-blue-600 font-semibold">
+                            {skill.level}%
+                          </span>
+                        </div>
+                        <div className={`w-full bg-gray-200 rounded-full h-2 ${isDark ? 'bg-gray-700' : 'bg-gray-200'}`}>
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${skill.level}%` }}
+                            transition={{ duration: 1, delay: index * 0.1 }}
+                            className="bg-gradient-to-r from-blue-600 to-blue-700 h-2 rounded-full"
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
+                </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Tools Section */}
-        <div className="mb-16">
-          <h3 className={`text-2xl md:text-3xl font-bold mb-8 text-center ${
-            isDark ? 'text-white' : 'text-gray-900'
-          }`}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+          className="mb-20"
+        >
+          <motion.h3 
+            variants={itemVariants}
+            className={`text-3xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}
+          >
             Tools & Technologies
-          </h3>
-          <div className="grid md:grid-cols-3 gap-8">
-            {Object.entries(toolsByCategory).map(([category, categoryTools]) => (
-              <div key={category} className="animate-fade-in-up">
-                <h4 className={`text-xl font-semibold mb-4 capitalize ${
-                  isDark ? 'text-gray-300' : 'text-gray-700'
-                }`}>
-                  {category} Tools
-                </h4>
-                <div className="flex flex-wrap gap-2">
-                  {categoryTools.map((tool) => (
-                    <span
-                      key={tool.name}
-                      className={`px-3 py-2 rounded-full text-sm font-medium transition-all duration-200 hover:scale-105 ${
-                        isDark 
-                          ? 'bg-gray-700 text-gray-300 hover:bg-gray-600' 
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                      }`}
-                    >
-                      {tool.name}
-                    </span>
-                  ))}
-                </div>
-              </div>
+          </motion.h3>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {tools.map((tool, index) => (
+              <motion.div
+                key={tool.name}
+                variants={itemVariants}
+                whileHover={{ scale: 1.05, y: -5 }}
+                className={`p-4 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 text-center cursor-pointer`}
+              >
+                <div className="text-3xl mb-2">{tool.icon}</div>
+                <p className={`font-medium ${isDark ? 'text-gray-300' : 'text-gray-800'}`}>
+                  {tool.name}
+                </p>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
         {/* Experience Section */}
-        <div>
-          <h3 className={`text-2xl md:text-3xl font-bold mb-8 text-center ${
-            isDark ? 'text-white' : 'text-gray-900'
-          }`}>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={containerVariants}
+        >
+          <motion.h3 
+            variants={itemVariants}
+            className={`text-3xl font-bold mb-12 text-center ${isDark ? 'text-white' : 'text-gray-900'}`}
+          >
             Professional Experience
-          </h3>
+          </motion.h3>
+          
           <div className="space-y-8">
             {experience.map((exp, index) => (
-              <div key={index} className="animate-fade-in-up" style={{ animationDelay: `${index * 0.2}s` }}>
-                <div className={`border-l-4 border-red-600 pl-6 py-6 ${
-                  isDark ? 'bg-gray-700/50' : 'bg-gray-50'
-                } rounded-r-lg transition-all duration-300 hover:shadow-lg hover:scale-[1.02]`}>
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                    <div>
-                      <h4 className={`font-bold text-xl mb-1 ${
-                        isDark ? 'text-white' : 'text-gray-900'
-                      }`}>
-                        {exp.title}
-                      </h4>
-                      <p className="text-red-600 font-semibold text-lg">{exp.company}</p>
-                    </div>
-                    <p className={`text-sm ${
-                      isDark ? 'text-gray-400' : 'text-gray-500'
-                    } font-medium`}>
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                className={`p-8 rounded-xl ${isDark ? 'bg-gray-800' : 'bg-white'} shadow-lg hover:shadow-xl transition-all duration-300 border-l-4 border-blue-600`}
+              >
+                <div className="grid md:grid-cols-4 gap-6">
+                  <div className="md:col-span-3">
+                    <h4 className={`text-2xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                      {exp.title}
+                    </h4>
+                    <p className="text-blue-600 font-semibold text-lg mb-2">{exp.company}</p>
+                    <p className={`text-sm ${isDark ? 'text-gray-400' : 'text-gray-500'} mb-4`}>
                       {exp.period}
                     </p>
+                    <ul className={`space-y-2 ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                      {exp.description.map((desc, descIndex) => (
+                        <li key={descIndex} className="flex items-start">
+                          <span className="text-blue-600 mr-2 mt-1">•</span>
+                          {desc}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  
-                  <ul className={`space-y-2 mb-4 ${
-                    isDark ? 'text-gray-300' : 'text-gray-600'
-                  }`}>
-                    {exp.description.map((desc, descIndex) => (
-                      <li key={descIndex} className="flex items-start">
-                        <span className="text-red-600 mr-2">•</span>
-                        <span>{desc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div className="flex flex-wrap gap-2">
-                    {exp.technologies.map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs rounded bg-red-100 text-red-700 font-medium"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                  <div className="md:col-span-1">
+                    <h5 className={`font-semibold mb-3 ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
+                      Technologies
+                    </h5>
+                    <div className="flex flex-wrap gap-2">
+                      {exp.technologies.map((tech) => (
+                        <span
+                          key={tech}
+                          className="text-xs px-3 py-1 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white font-medium"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
       </div>
-
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-500/5 to-pink-500/5 rounded-full blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-pink-500/5 to-red-500/5 rounded-full blur-3xl"></div>
     </section>
   );
 };
