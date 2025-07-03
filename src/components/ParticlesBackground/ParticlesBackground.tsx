@@ -23,17 +23,17 @@ export const ParticlesBackground: React.FC = () => {
 
     const createParticles = () => {
       const particles: Particle[] = [];
-      const particleCount = Math.floor((window.innerWidth * window.innerHeight) / 15000);
+      const particleCount = 50; // More particles for better effect
       
       for (let i = 0; i < particleCount; i++) {
         particles.push({
           id: i,
           x: Math.random() * canvas.width,
-          y: Math.random() * canvas.height,
-          size: Math.random() * 3 + 1,
+          y: canvas.height + Math.random() * 100, // Start from bottom
+          size: Math.random() * 4 + 1,
           speedX: (Math.random() - 0.5) * 0.5,
-          speedY: (Math.random() - 0.5) * 0.5,
-          opacity: Math.random() * 0.5 + 0.2
+          speedY: -(Math.random() * 2 + 0.5), // Move upward
+          opacity: Math.random() * 0.8 + 0.2
         });
       }
       
@@ -45,11 +45,17 @@ export const ParticlesBackground: React.FC = () => {
         particle.x += particle.speedX;
         particle.y += particle.speedY;
 
-        if (particle.x < 0 || particle.x > canvas.width) particle.speedX *= -1;
-        if (particle.y < 0 || particle.y > canvas.height) particle.speedY *= -1;
+        // Reset particle when it goes off screen
+        if (particle.y < -10) {
+          particle.y = canvas.height + 10;
+          particle.x = Math.random() * canvas.width;
+        }
+        
+        if (particle.x < 0 || particle.x > canvas.width) {
+          particle.speedX *= -1;
+        }
 
         particle.x = Math.max(0, Math.min(canvas.width, particle.x));
-        particle.y = Math.max(0, Math.min(canvas.height, particle.y));
       });
     };
 
@@ -57,27 +63,34 @@ export const ParticlesBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       
       particlesRef.current.forEach(particle => {
+        // Draw particle
         ctx.beginPath();
         ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
         ctx.fillStyle = isDark 
-          ? `rgba(59, 130, 246, ${particle.opacity})` 
-          : `rgba(37, 99, 235, ${particle.opacity})`;
+          ? `rgba(239, 68, 68, ${particle.opacity})` // Red particles for dark theme
+          : `rgba(59, 130, 246, ${particle.opacity})`; // Blue particles for light theme
         ctx.fill();
 
-        // Draw connections
+        // Add glow effect
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = isDark ? '#ef4444' : '#3b82f6';
+        ctx.fill();
+        ctx.shadowBlur = 0;
+
+        // Draw connections between nearby particles
         particlesRef.current.forEach(otherParticle => {
           const distance = Math.sqrt(
             Math.pow(particle.x - otherParticle.x, 2) + 
             Math.pow(particle.y - otherParticle.y, 2)
           );
           
-          if (distance < 100) {
+          if (distance < 120) {
             ctx.beginPath();
             ctx.moveTo(particle.x, particle.y);
             ctx.lineTo(otherParticle.x, otherParticle.y);
             ctx.strokeStyle = isDark 
-              ? `rgba(59, 130, 246, ${0.1 * (1 - distance / 100)})` 
-              : `rgba(37, 99, 235, ${0.1 * (1 - distance / 100)})`;
+              ? `rgba(239, 68, 68, ${0.15 * (1 - distance / 120)})` 
+              : `rgba(59, 130, 246, ${0.15 * (1 - distance / 120)})`;
             ctx.lineWidth = 1;
             ctx.stroke();
           }

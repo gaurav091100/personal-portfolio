@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useTheme } from '../../hooks/useTheme';
-import { Button } from '../UI/Button';
+import { Button } from '../ui/button';
 
 export const HeroSection: React.FC = () => {
   const { isDark } = useTheme();
@@ -14,50 +14,67 @@ export const HeroSection: React.FC = () => {
   };
 
   return (
-    <section id="home" className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative overflow-hidden">
-      <div className="max-w-7xl mx-auto w-full">
-        <div className="text-center relative z-10">
+    <section 
+      id="home" 
+      className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 min-h-screen flex items-center relative overflow-hidden"
+      style={{
+        backgroundImage: `url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2072&q=80')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}
+    >
+      {/* Dark overlay */}
+      <div className="absolute inset-0 bg-black/50"></div>
+      
+      <div className="max-w-7xl mx-auto w-full relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Left content */}
           <div className="animate-fade-in-up">
-            <h1 className={`text-4xl md:text-6xl lg:text-7xl font-bold mb-6 ${
-              isDark ? 'text-white' : 'text-gray-900'
-            } animate-text-gradient`}>
-              Hi, I'm{' '}
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-800 bg-clip-text text-transparent animate-pulse">
-                Alex Johnson
-              </span>
+            <p className="text-lg text-white/90 mb-4">Hello, my name is</p>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 text-white">
+              Gaurav Suthar
             </h1>
-            <p className={`text-xl md:text-2xl lg:text-3xl mb-8 ${
-              isDark ? 'text-gray-300' : 'text-gray-600'
-            } animate-fade-in-up animation-delay-200`}>
-              Frontend Developer specializing in React & Modern Web Technologies
+            <p className="text-xl md:text-2xl mb-2 text-white/90">
+              And I'm a
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-12 animate-fade-in-up animation-delay-400">
+            <h2 className="text-3xl md:text-5xl font-bold mb-8 bg-gradient-to-r from-red-500 to-pink-600 bg-clip-text text-transparent">
+              Web Developer
+            </h2>
+            <div className="flex flex-col sm:flex-row gap-4 mb-12">
               <Button
                 onClick={() => scrollToSection('contact')}
-                variant="primary"
+                className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 text-lg"
                 size="lg"
-                className="hover:shadow-lg hover:shadow-blue-500/25"
               >
-                Get In Touch
+                Resume
               </Button>
               <Button
                 onClick={() => scrollToSection('projects')}
                 variant="outline"
+                className="border-white text-white hover:bg-white hover:text-black px-8 py-3 text-lg"
                 size="lg"
-                className="hover:shadow-lg hover:shadow-blue-500/25"
               >
                 View Work
               </Button>
             </div>
           </div>
+
+          {/* Right content - Profile Image */}
+          <div className="flex justify-center lg:justify-end animate-fade-in-up animation-delay-400">
+            <div className="relative">
+              <div className="w-80 h-80 rounded-full border-4 border-red-500 overflow-hidden shadow-2xl">
+                <img
+                  src="/lovable-uploads/d362315d-aa03-4829-804c-ed1f58b6e2fc.png"
+                  alt="Gaurav Suthar"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              {/* Floating animation ring */}
+              <div className="absolute inset-0 rounded-full border-2 border-red-500/30 animate-ping"></div>
+            </div>
+          </div>
         </div>
-      </div>
-      
-      {/* Floating geometric shapes */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-32 h-32 bg-blue-500/10 rounded-full animate-float"></div>
-        <div className="absolute top-3/4 right-1/4 w-48 h-48 bg-purple-500/10 rounded-full animate-float-delayed"></div>
-        <div className="absolute top-1/2 left-3/4 w-24 h-24 bg-pink-500/10 rotate-45 animate-spin-slow"></div>
       </div>
     </section>
   );

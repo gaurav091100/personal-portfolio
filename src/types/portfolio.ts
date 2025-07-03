@@ -23,19 +23,27 @@ export type ProjectCategory = 'Personal Project' | 'Company Project' | 'Freelanc
 export interface Skill {
   name: string;
   level: number;
+  category: 'frontend' | 'backend' | 'database' | 'other';
+}
+
+export interface Tool {
+  name: string;
+  icon?: string;
+  category: 'development' | 'design' | 'productivity' | 'other';
 }
 
 export interface Experience {
   title: string;
   company: string;
   period: string;
-  description: string;
+  description: string[];
+  technologies: string[];
 }
 
 export interface NavItem {
   id: string;
   label: string;
-  icon: React.ComponentType<{ size?: number }>;
+  icon: React.ComponentType<any>;
 }
 
 export interface ContactFormData {
