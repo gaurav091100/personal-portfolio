@@ -5,6 +5,7 @@ import { ParticlesBackground } from '../ParticlesBackground/ParticlesBackground'
 import { Navigation } from '../Navigation/Navigation';
 import { HeroSection } from '../HeroSection/HeroSection';
 import { AboutSection } from '../AboutSection/AboutSection';
+import { ExperienceSection } from '../ExperienceSection/ExperienceSection';
 import { ProjectsSection } from '../ProjectsSection/ProjectsSection';
 import { ContactSection } from '../ContactSection/ContactSection';
 import { Footer } from '../Footer/Footer';
@@ -21,6 +22,7 @@ const PortfolioContent: React.FC = () => {
       <main>
         <HeroSection />
         <AboutSection />
+        <ExperienceSection />
         <ProjectsSection />
         <ContactSection />
       </main>
