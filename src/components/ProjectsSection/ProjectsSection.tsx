@@ -11,7 +11,7 @@ const projects: Project[] = [
     category: "Freelance",
     description: "Developed an admin and client-facing portfolio website for a video editing agency. The admin panel enables management of job postings, work submissions, video configuration settings, and handling of user queries.",
     technologies: ["React", "TypeScript", "shadCN", "Tailwind CSS"],
-    image: "/public/assets/project-images/framefry-studios-cover.png",
+    image: "//assets/project-images/framefry-studios-cover.png",
     github: "",
     demo: "https://dev.framefry.com/"
   },
@@ -21,7 +21,7 @@ const projects: Project[] = [
     category: "Freelance",
     description: "Developed a full-stack NGO website using the MERN stack, featuring PhonePe payment gateway integration, a responsive layout, and a modern user interface.",
     technologies: ["React", "Node.js", "Express", "MongoDB", "typescript", "shadCN", "Tailwind CSS", "Phonepe"],
-    image: "/public/assets/project-images/manasa-foundation-cover.png",
+    image: "//assets/project-images/manasa-foundation-cover.png",
     github: "",
     demo: "https://manasa-foundation-xi.vercel.app/"
   },
@@ -31,7 +31,7 @@ const projects: Project[] = [
     category: "Professional Project",
     description: "Implemented a dynamic blog feature by integrating the Frappe API and contributed to overall website enhancements, improving both functionality and user experience.",
     technologies: ["Next.js","typescript", "shadCN", "Tailwind CSS"],
-    image: "/public/assets/project-images/girman-technologies-cover.png",
+    image: "//assets/project-images/girman-technologies-cover.png",
     github: "",
     demo: "https://www.girmantech.com/blog"
   },
@@ -41,7 +41,7 @@ const projects: Project[] = [
     category: "Professional Project",
     description: "Designed and developed the BookMyJet platform with a modern UI and responsive layout, integrating multiple APIs to support booking functionality and real-time data display.",
     technologies: ["React", "typescript", "Material UI", "SCSS", "CSS3","Google Maps"],
-    image: "/public/assets/project-images/bookmyjet-cover.png",
+    image: "//assets/project-images/bookmyjet-cover.png",
     github: "",
     demo: "https://bookmyjet.co.in/"
   },
@@ -51,7 +51,7 @@ const projects: Project[] = [
     category: "Professional Project",
     description: "Contributed to the WhereUElevate platform by developing user profiles, blogs, job listings, admin portal, and the hackathons feature to enable event creation, participation, and management.",
     technologies: ["React","javascript", "typescript", "Material UI", "SCSS", "CSS3"],
-    image: "/public/assets/project-images/where-u-elevate-cover.png",
+    image: "//assets/project-images/where-u-elevate-cover.png",
     github: "",
     demo: "https://whereuelevate.com/"
   },
@@ -61,7 +61,7 @@ const projects: Project[] = [
     category: "Personal Project",
     description: "Developed a full-stack e-commerce platform featuring product browsing, ratings, cart and checkout functionality, along with an admin portal for managing products, and inventory.",
     technologies: ["React", "Redux", "typescript", "Node.js", "Express", "MongoDB","Stripe", "Chakra UI", "CSS3"],
-    image: "/public/assets/project-images/fashion-store-cover.png",
+    image: "//assets/project-images/fashion-store-cover.png",
     github: "https://github.com/gaurav091100/fashion-store",
     demo: "https://fashiion-store.vercel.app/"
   },
@@ -71,7 +71,7 @@ const projects: Project[] = [
     category: "Personal Project",
     description: "Designed and developed a responsive Netflix clone with dynamic movie sections, and a modern UI using React, TypeScript, and Tailwind CSS.",
     technologies: ["React", "typescript", "tailwindcss", "shadCN", "tmdbAPI"],
-    image: "/public/assets/project-images/netflix-clone-cover.png",
+    image: "//assets/project-images/netflix-clone-cover.png",
     github: "https://github.com/gaurav091100/netflix_clone",
     demo: "https://netflix-clone-beta-blue.vercel.app/"
   },
