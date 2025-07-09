@@ -18,7 +18,7 @@ export interface Project {
   demo: string;
 }
 
-export type ProjectCategory = 'Personal Project' | 'Company Project' | 'Freelance';
+export type ProjectCategory = 'Personal Project' | 'Professional Project' | 'Freelance';
 
 export interface Skill {
   name: string;

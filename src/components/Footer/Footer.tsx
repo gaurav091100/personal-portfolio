@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
     } border-t`}>
       <div className="max-w-7xl mx-auto text-center">
         <p className={`${isDark ? 'text-gray-400' : 'text-gray-600'}`}>
-          © 2024 Alex Johnson. Built with React, TypeScript & Tailwind CSS.
+          © {new Date().getFullYear()} Gaurav Suthar. Built with React, TypeScript & Tailwind CSS.
         </p>
       </div>
     </footer>

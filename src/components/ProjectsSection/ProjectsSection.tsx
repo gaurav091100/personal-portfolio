@@ -7,37 +7,77 @@ import { Project, ProjectCategory } from '../../types/portfolio';
 const projects: Project[] = [
   {
     id: 1,
-    title: "E-commerce Dashboard",
-    category: "Company Project",
-    description: "Built a comprehensive admin dashboard for managing products, orders, and analytics using React and Chart.js.",
-    technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS"],
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-    github: "#",
-    demo: "#"
+    title: "Frame Fry Studios",
+    category: "Freelance",
+    description: "Developed an admin and client-facing portfolio website for a video editing agency. The admin panel enables management of job postings, work submissions, video configuration settings, and handling of user queries.",
+    technologies: ["React", "TypeScript", "shadCN", "Tailwind CSS"],
+    image: "/public/assets/project-images/framefry-studios-cover.png",
+    github: "",
+    demo: "https://dev.framefry.com/"
   },
   {
     id: 2,
-    title: "Task Management App",
-    category: "Personal Project",
-    description: "A full-stack task management application with real-time updates and team collaboration features.",
-    technologies: ["React", "Node.js", "Socket.io", "MongoDB"],
-    image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=400&h=300&fit=crop",
-    github: "#",
-    demo: "#"
+    title: "Manasa Foundation",
+    category: "Freelance",
+    description: "Developed a full-stack NGO website using the MERN stack, featuring PhonePe payment gateway integration, a responsive layout, and a modern user interface.",
+    technologies: ["React", "Node.js", "Express", "MongoDB", "typescript", "shadCN", "Tailwind CSS", "Phonepe"],
+    image: "/public/assets/project-images/manasa-foundation-cover.png",
+    github: "",
+    demo: "https://manasa-foundation-xi.vercel.app/"
   },
   {
     id: 3,
-    title: "Restaurant Landing Page",
-    category: "Freelance",
-    description: "Designed and developed a modern, responsive landing page for a high-end restaurant with smooth animations.",
-    technologies: ["HTML", "CSS", "JavaScript", "GSAP"],
-    image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&h=300&fit=crop",
-    github: "#",
-    demo: "#"
-  }
+    title: "Girman Technologies",
+    category: "Professional Project",
+    description: "Implemented a dynamic blog feature by integrating the Frappe API and contributed to overall website enhancements, improving both functionality and user experience.",
+    technologies: ["Next.js","typescript", "shadCN", "Tailwind CSS"],
+    image: "/public/assets/project-images/girman-technologies-cover.png",
+    github: "",
+    demo: "https://www.girmantech.com/blog"
+  },
+  {
+    id: 4,
+    title: "Bookmyjet",
+    category: "Professional Project",
+    description: "Designed and developed the BookMyJet platform with a modern UI and responsive layout, integrating multiple APIs to support booking functionality and real-time data display.",
+    technologies: ["React", "typescript", "Material UI", "SCSS", "CSS3","Google Maps"],
+    image: "/public/assets/project-images/bookmyjet-cover.png",
+    github: "",
+    demo: "https://bookmyjet.co.in/"
+  },
+  {
+    id: 5,
+    title: "Where U Elevate",
+    category: "Professional Project",
+    description: "Contributed to the WhereUElevate platform by developing user profiles, blogs, job listings, admin portal, and the hackathons feature to enable event creation, participation, and management.",
+    technologies: ["React","javascript", "typescript", "Material UI", "SCSS", "CSS3"],
+    image: "/public/assets/project-images/where-u-elevate-cover.png",
+    github: "",
+    demo: "https://whereuelevate.com/"
+  },
+  {
+    id: 6,
+    title: "Fashion Store",
+    category: "Personal Project",
+    description: "Developed a full-stack e-commerce platform featuring product browsing, ratings, cart and checkout functionality, along with an admin portal for managing products, and inventory.",
+    technologies: ["React", "Redux", "typescript", "Node.js", "Express", "MongoDB","Stripe", "Chakra UI", "CSS3"],
+    image: "/public/assets/project-images/fashion-store-cover.png",
+    github: "https://github.com/gaurav091100/fashion-store",
+    demo: "https://fashiion-store.vercel.app/"
+  },
+  {
+    id: 7,
+    title: "Netflix Clone",
+    category: "Personal Project",
+    description: "Designed and developed a responsive Netflix clone with dynamic movie sections, and a modern UI using React, TypeScript, and Tailwind CSS.",
+    technologies: ["React", "typescript", "tailwindcss", "shadCN", "tmdbAPI"],
+    image: "/public/assets/project-images/netflix-clone-cover.png",
+    github: "https://github.com/gaurav091100/netflix_clone",
+    demo: "https://netflix-clone-beta-blue.vercel.app/"
+  },
 ];
 
-const categories = ["All", "Personal Project", "Company Project", "Freelance"];
+const categories = ["All", "Personal Project", "Professional Project", "Freelance"];
 
 export const ProjectsSection: React.FC = () => {
   const { isDark } = useTheme();
@@ -61,7 +101,7 @@ export const ProjectsSection: React.FC = () => {
           <p className={`text-lg md:text-xl ${
             isDark ? 'text-gray-300' : 'text-gray-600'
           } max-w-3xl mx-auto animate-fade-in-up animation-delay-200`}>
-            Here are some of my recent projects across personal work, company projects, and freelance work.
+            Here are some of my recent projects across personal work, Professional Projects, and freelance work.
           </p>
         </div>
 
@@ -102,18 +142,26 @@ export const ProjectsSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                   <div className="flex space-x-4">
-                    <a
+                    {
+                      project.demo &&  <a
                       href={project.demo}
+                      target='_blank'
                       className="p-3 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all duration-200 hover:scale-110"
                     >
                       <ExternalLink size={20} />
                     </a>
-                    <a
+                    }
+                    
+                    {
+                      project.github && <a
                       href={project.github}
+                      target='_blank'
                       className="p-3 bg-gray-800 text-white rounded-full hover:bg-gray-700 transition-all duration-200 hover:scale-110"
                     >
                       <Github size={20} />
                     </a>
+                    }
+                    
                   </div>
                 </div>
               </div>

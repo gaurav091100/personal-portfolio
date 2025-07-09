@@ -48,7 +48,7 @@ export const Navigation: React.FC = () => {
                 onClick={() => scrollToSection(id)}
                 className={`transition-all duration-200 hover:scale-105 ${
                   activeSection === id
-                    ? isDark ? 'text-red-400' : 'text-red-600'
+                    ? isDark ? 'text-blue-400' : 'text-blue-600'
                     : isDark ? 'text-gray-300 hover:text-white' : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
@@ -97,7 +97,7 @@ export const Navigation: React.FC = () => {
                 onClick={() => scrollToSection(id)}
                 className={`w-full flex items-center space-x-3 px-3 py-2 rounded-md text-left transition-all duration-200 hover:scale-105 ${
                   activeSection === id
-                    ? isDark ? 'bg-red-900 text-red-400' : 'bg-red-50 text-red-600'
+                    ? isDark ? 'bg-blue-900 text-blue-400' : 'bg-blue-50 text-blue-600'
                     : isDark ? 'text-gray-300 hover:bg-gray-800 hover:text-white' : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900'
                 }`}
               >

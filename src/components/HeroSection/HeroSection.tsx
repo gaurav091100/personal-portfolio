@@ -67,7 +67,7 @@ export const HeroSection: React.FC = () => {
       id="home" 
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{
-        backgroundImage: `linear-gradient(135deg, ${isDark ? 'rgba(17, 24, 39, 0.95)' : 'rgba(248, 250, 252, 0.95)'}, ${isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(219, 234, 254, 0.95)'}), url('/lovable-uploads/d362315d-aa03-4829-804c-ed1f58b6e2fc.png')`,
+        backgroundImage: `linear-gradient(135deg, ${isDark ? 'rgba(17, 24, 39, 0.95)' : 'rgba(248, 250, 252, 0.95)'}, ${isDark ? 'rgba(30, 41, 59, 0.95)' : 'rgba(219, 234, 254, 0.95)'}), url('https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGZyb250ZW5kJTIwZGV2ZWxvcGVyfGVufDB8fDB8fHww')`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundAttachment: 'fixed'
@@ -118,17 +118,17 @@ export const HeroSection: React.FC = () => {
             >
               Hi, I'm{' '}
               <span className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-clip-text text-transparent">
-                Alex Johnson
+                Gaurav Suthar
               </span>
             </motion.h1>
             
             <div className={`text-2xl md:text-4xl lg:text-5xl font-light ${isDark ? 'text-gray-200' : 'text-gray-700'}`}>
               <TypewriterEffect
                 texts={[
-                  "Frontend Developer",
-                  "React Specialist",
+                  "Frontend Engineer",
+                  "React Developer",
                   "UI/UX Enthusiast",
-                  "Full Stack Developer"
+                  "MERN Stack Developer"
                 ]}
                 typingSpeed={100}
                 deletingSpeed={50}
@@ -182,13 +182,14 @@ export const HeroSection: React.FC = () => {
             className="flex justify-center space-x-6"
           >
             {[
-              { icon: Github, href: "#", label: "GitHub" },
-              { icon: Linkedin, href: "#", label: "LinkedIn" },
-              { icon: Mail, href: "#", label: "Email" }
+              { icon: Github, href: "https://github.com/gaurav091100", label: "GitHub" },
+              { icon: Linkedin, href: "https://www.linkedin.com/in/gaurav-s-307578330", label: "LinkedIn" },
+              { icon: Mail, href: "gaurav091100@gmail.com", label: "Email" }
             ].map(({ icon: Icon, href, label }) => (
               <motion.a
                 key={label}
-                href={href}
+                href={label.toLocaleLowerCase() === "email" ? `mailto:${href}` : href}
+                target='_blank'
                 whileHover={{ scale: 1.2, y: -5 }}
                 whileTap={{ scale: 0.9 }}
                 className={`p-4 rounded-full backdrop-blur-sm transition-all duration-300 ${
@@ -206,7 +207,7 @@ export const HeroSection: React.FC = () => {
           {/* Scroll Indicator */}
           <motion.div 
             variants={itemVariants}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+            className="absolute -bottom-20 left-1/2 transform -translate-x-1/2"
           >
             <motion.div
               animate={{ y: [0, 10, 0] }}

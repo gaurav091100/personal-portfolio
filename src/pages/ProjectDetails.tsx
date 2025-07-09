@@ -33,7 +33,7 @@ const ProjectDetails: React.FC = () => {
     {
       id: 1,
       title: "E-commerce Dashboard",
-      category: "Company Project",
+      category: "Professional Project",
       description: "Comprehensive admin dashboard for managing products, orders, and analytics",
       longDescription: "A full-featured e-commerce dashboard built for a major retail client. The platform handles over 10,000 products and processes 500+ orders daily. Features include real-time analytics, inventory management, customer support tools, and automated reporting systems.",
       technologies: ["React", "TypeScript", "Chart.js", "Tailwind CSS", "Node.js", "PostgreSQL", "Redis", "Docker"],
