@@ -300,8 +300,8 @@ export const ToolsCarousel: React.FC = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious data-carousel-prev />
-        <CarouselNext data-carousel-next />
+        <CarouselPrevious data-carousel-prev className='hidden md:inline-flex' />
+        <CarouselNext data-carousel-next className='hidden md:inline-flex' />
       </Carousel>
     </div>
   );

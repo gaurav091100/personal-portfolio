@@ -168,12 +168,12 @@ export const ParticlesBackground: React.FC = () => {
     <>
       <canvas
         ref={canvasRef}
-        className="fixed inset-0 -z-10 pointer-events-none"
+        className="fixed inset-0 z-10 pointer-events-none opacity-20"
         style={{ background: 'transparent' }}
       />
       
       {/* Additional floating elements */}
-      <div className="fixed inset-0 -z-10 pointer-events-none overflow-hidden">
+      <div className="fixed inset-0 z-10 pointer-events-none overflow-hidden">
         {[...Array(6)].map((_, i) => (
           <motion.div
             key={i}
